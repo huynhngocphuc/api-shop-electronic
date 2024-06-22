@@ -9,7 +9,7 @@ sequelize.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
     // Đồng bộ hóa mô hình với cơ sở dữ liệu
-    return sequelize.sync({ alter: true }); // Hoặc { alter: true }
+    return sequelize.sync({ alter: true });
   })
   .then(() => {
     console.log('Database & tables created!');

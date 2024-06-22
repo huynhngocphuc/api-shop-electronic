@@ -25,9 +25,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
     },
-    { timestamps: true,
-      freezeTableName: true,
-     }
+    { timestamps: true, freezeTableName: true }
   );
 
   User.beforeCreate(async (user) => {
