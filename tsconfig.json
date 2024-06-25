@@ -5,7 +5,8 @@
     "rootDir": "./src",
     "module": "CommonJS",
     "esModuleInterop": true, // connect module commonjs and es6
-    "moduleDetection": "force" //all is module.
+    "moduleDetection": "force", //all is module.
+    "resolveJsonModule": true, // accept file json
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/app.ts"],
   "exclude": ["node_modules"]

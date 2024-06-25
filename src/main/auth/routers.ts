@@ -1,6 +1,5 @@
-const express = require("express");
-
-const { User } = require("../models");
+import express from "express";
+import { User } from "./models";
 
 const routerAuth = express.Router();
 
@@ -19,13 +18,10 @@ routerAuth.post("/register", async (req, res) => {
   }
 });
 
-routerAuth.post('/login', async (req, res) => {
-    const { username, password } = req.body;
-    try {
-        
-    } catch (error) {
-        
-    }
-})
+routerAuth.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  try {
+  } catch (error) {}
+});
 
-module.exports = routerAuth;
+export { routerAuth };
