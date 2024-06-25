@@ -1,8 +1,8 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../../db/connection";
-import { bcrypt } from "bcrypt";
+import bcrypt from "bcrypt";
 interface UserAttributes {
-  user_id: number;
+  user_id?: number;
   username: string;
   email: string;
   password: string;
@@ -24,7 +24,6 @@ export const User = sequelize.define<UserModel>(
     },
     email: {
       type: DataTypes.STRING,
-      unique: true,
       allowNull: false,
     },
     password: {

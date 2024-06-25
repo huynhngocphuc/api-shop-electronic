@@ -7,6 +7,8 @@
     "esModuleInterop": true, // connect module commonjs and es6
     "moduleDetection": "force", //all is module.
     "resolveJsonModule": true, // accept file json
+    "strict": true,// check strict
+    "skipLibCheck": true,
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/app.ts"],
   "exclude": ["node_modules"]

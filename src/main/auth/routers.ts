@@ -1,4 +1,4 @@
-import express from "express";
+import express from 'express';
 import { User } from "./models";
 
 const routerAuth = express.Router();
@@ -14,6 +14,7 @@ routerAuth.post("/register", async (req, res) => {
     });
     res.json(user);
   } catch (error) {
+
     res.status(500).json({ error: "Something went wrong" });
   }
 });
