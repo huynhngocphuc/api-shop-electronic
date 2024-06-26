@@ -9,6 +9,7 @@ export const sequelize = new Sequelize({
   database: configEnv.database,
   host: configEnv.host,
   dialect: configEnv.dialect as Dialect,
+  logging: false
 });
 
 sequelize

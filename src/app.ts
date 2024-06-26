@@ -1,5 +1,6 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import { routerAuth } from "./main/auth/routers";
+import { errorHandler } from "./middleware/errorHandler";
 
 const app = express();
 require("dotenv").config();
@@ -8,6 +9,7 @@ const port = process.env.PORT || 8080;
 const root_path = process.env.ROOT_PATH || "/api/v1";
 
 app.use(`${root_path}/auth`, routerAuth);
+app.use(errorHandler);
 app.listen(port, () => {
   console.log(`server is running port port ${port}`);
 });
