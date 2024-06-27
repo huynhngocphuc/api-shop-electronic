@@ -9,8 +9,14 @@ interface UserAttributes {
 }
 interface UserModel extends Model<UserAttributes>, UserAttributes {}
 
-export const User = sequelize.define<UserModel>(
-  "user",
+class User extends Model {
+  public user_id!: number;
+  public username!: string;
+  public email!: string;
+  public password!: string;
+}
+
+User.init(
   {
     user_id: {
       type: DataTypes.INTEGER,
@@ -31,10 +37,16 @@ export const User = sequelize.define<UserModel>(
       allowNull: false,
     },
   },
-  { timestamps: true, freezeTableName: true }
+  {
+    sequelize,
+    timestamps: true,
+    freezeTableName: true,
+  }
 );
 
 User.beforeCreate(async (user) => {
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
 });
+
+export default User;

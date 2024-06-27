@@ -1,5 +1,5 @@
 import express, { NextFunction } from "express";
-import { User } from "./models";
+import  User from "./models";
 import { ValidationError } from "sequelize";
 
 const routerAuth = express.Router();
