@@ -10,10 +10,10 @@ interface UserAttributes {
 interface UserModel extends Model<UserAttributes>, UserAttributes {}
 
 class User extends Model {
-  public user_id!: number;
-  public username!: string;
-  public email!: string;
-  public password!: string;
+  public user_id: number;
+  public username: string;
+  public email: string;
+  public password: string;
 }
 
 User.init(
@@ -49,4 +49,25 @@ User.beforeCreate(async (user) => {
   user.password = await bcrypt.hash(user.password, salt);
 });
 
-export default User;
+
+type TRegisterReq = {
+  userName: string;
+  passWord: string;
+  email: string;
+}
+
+type TRegisterRes = {
+  token: string
+}
+
+
+type TLoginReq = {
+    userName: string;
+    passWord: string;
+}
+
+type TLoginRes = {
+    token: string
+}
+
+export { User, TLoginReq, TLoginRes, TRegisterReq, TRegisterRes};
