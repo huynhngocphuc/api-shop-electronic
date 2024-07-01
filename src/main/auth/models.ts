@@ -1,6 +1,6 @@
+import bcrypt from "bcrypt";
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../../db/connection";
-import bcrypt from "bcrypt";
 interface UserAttributes {
   user_id?: number;
   username: string;
@@ -50,24 +50,7 @@ User.beforeCreate(async (user) => {
 });
 
 
-type TRegisterReq = {
-  userName: string;
-  passWord: string;
-  email: string;
-}
-
-type TRegisterRes = {
-  token: string
-}
 
 
-type TLoginReq = {
-    userName: string;
-    passWord: string;
-}
+export { User };
 
-type TLoginRes = {
-    token: string
-}
-
-export { User, TLoginReq, TLoginRes, TRegisterReq, TRegisterRes};

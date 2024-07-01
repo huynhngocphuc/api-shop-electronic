@@ -1,26 +1,16 @@
 import express, { NextFunction } from "express";
 import { User } from "./models";
+import { registerController } from "./controller";
+import { registerValidator } from "./validator";
+import { validationResult } from "express-validator";
+import { validatorMiddleware } from "./middleware/validatorMiddleware";
 
 const routerAuth = express.Router();
 
-routerAuth.post("/register", async (req, res, next: NextFunction) => {
-  const { username, password, email } = req.body;
-  try {
-    const user = await User.create({
-      username,
-      password,
-      email,
-    });
-    res.json(user);
-  } catch (error) {
-    next(error);
-  }
-});
+routerAuth.post("/register", registerValidator, validatorMiddleware, registerController)
 
 routerAuth.post("/login", async (req, res) => {
-  const { username, password } = req.body;
-  try {
-  } catch (error) {}
+ 
 });
 
 export { routerAuth };
