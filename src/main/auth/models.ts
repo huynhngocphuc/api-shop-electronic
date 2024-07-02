@@ -1,38 +1,44 @@
 import bcrypt from "bcrypt";
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../../db/connection";
-interface UserAttributes {
-  user_id?: number;
-  username: string;
-  email: string;
-  password: string;
-}
-interface UserModel extends Model<UserAttributes>, UserAttributes {}
 
-class User extends Model {
-  public user_id: number;
-  public username: string;
-  public email: string;
-  public password: string;
+enum TableFieldName {
+  UserId = "userId",
+  UserName = "userName",
+  Email = "email",
+  Password = "passWord",
+}
+interface UserAttributes {
+  [TableFieldName.UserId]?: number;
+  [TableFieldName.UserName]: string;
+  [TableFieldName.Email]: string;
+  [TableFieldName.Password]: string;
+}
+
+class User extends Model<UserAttributes> {
+  public [TableFieldName.UserId]: number;
+  public [TableFieldName.UserName]: string;
+  public [TableFieldName.Email]: string;
+  public [TableFieldName.Password]: string;
 }
 
 User.init(
   {
-    user_id: {
+    [TableFieldName.UserId]: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
     },
-    username: {
+    [TableFieldName.UserName]: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
+    [TableFieldName.Email]: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    password: {
+    [TableFieldName.Password]: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -46,11 +52,10 @@ User.init(
 
 User.beforeCreate(async (user) => {
   const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash(user.password, salt);
+  user[TableFieldName.Password] = await bcrypt.hash(
+    user[TableFieldName.Password],
+    salt
+  );
 });
 
-
-
-
-export { User };
-
+export { User, TableFieldName };

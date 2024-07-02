@@ -1,9 +1,8 @@
-
-
+import { TableFieldName } from "./models";
 type TRegisterReq = {
-  userName: string;
-  passWord: string;
-  email: string;
+  [TableFieldName.UserName]: string;
+  [TableFieldName.Password]: string;
+  [TableFieldName.Email]: string;
 };
 
 type TRegisterRes = {
@@ -11,8 +10,8 @@ type TRegisterRes = {
 };
 
 type TLoginReq = {
-  userName: string;
-  passWord: string;
+  [TableFieldName.UserName]: string;
+  [TableFieldName.Password]: string;
 };
 
 type TLoginRes = {

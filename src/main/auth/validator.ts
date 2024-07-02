@@ -1,7 +1,8 @@
 import { body } from "express-validator"
+import { TableFieldName } from "./models"
 
 export const registerValidator = [
-    body("userName").notEmpty().withMessage("User Name is required"),
-    body("passWord").notEmpty().withMessage("Password is required"),
-    body("email").isEmail().withMessage("Invalid email format")
+    body([TableFieldName.UserName]).notEmpty().withMessage("User Name is required"),
+    body([TableFieldName.Password]).notEmpty().withMessage("Password is required"),
+    body([TableFieldName.Email]).isEmail().withMessage("Invalid email format")
 ]
