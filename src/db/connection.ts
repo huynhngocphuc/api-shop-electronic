@@ -17,7 +17,8 @@ sequelize
   .then(() => {
     console.log("Connection has been established successfully.");
     // Đồng bộ hóa mô hình với cơ sở dữ liệu
-    return sequelize.sync({ force: true });
+    // return sequelize.sync({ force: true }); // bật lên khi muốn xóa dữ liệu
+    return sequelize.sync({ alter: true });
   })
   .then(() => {
     console.log("Database & tables created!");

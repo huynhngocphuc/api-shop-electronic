@@ -14,6 +14,12 @@ app.use(`${root_path}/auth`, routerAuth);
 // middleware
 app.use(errorHandler);
 
+// middleware error different
+app.use((req, res) => {
+  res.status(404).send('SomeThings went wrong');
+});
+
+
 app.listen(port, () => {
   console.log(`server is running port ${port}`);
 });

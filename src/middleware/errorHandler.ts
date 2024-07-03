@@ -7,15 +7,10 @@ interface AppError extends Error {
 }
 
 const errorHandler = (error: AppError, req: Request, res: Response,  next: NextFunction) => {
-  console.log("🚀 ~ errorHandler ~ next:", next)
-  // if (error instanceof ValidationError) {
-  //   const messages = error.errors.map((err) => err.message);
-  //   return res.status(400).json({ errors: messages });
-  // } else {
     const statusCode = error.statusCode || 500;
     const message = error.message || "Internal Server Error";
     res.status(statusCode).json({
-      status: false,
+      success: false,
       statusCode,
       message,
     });

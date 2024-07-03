@@ -10,7 +10,7 @@ type TRegisterRes = {
 };
 
 type TLoginReq = {
-  [TableFieldName.UserName]: string;
+  [TableFieldName.Email]: string;
   [TableFieldName.Password]: string;
 };
 

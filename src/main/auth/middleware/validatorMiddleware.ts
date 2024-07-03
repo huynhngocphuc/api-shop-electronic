@@ -17,7 +17,11 @@ export const validatorMiddleware = (
     };
     res.status(STATUS_CODE.BAD_REQUEST).json(response);
   } else {
-    console.log("No validation errors found");
+    console.log("Input not found error");
     next(); // next to middleware registerController
   }
 };
+
+export const validatorAuth = (validatorReq: any) =>{
+  return [...validatorReq, validatorMiddleware]
+}

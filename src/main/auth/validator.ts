@@ -6,3 +6,8 @@ export const registerValidator = [
     body([TableFieldName.Password]).notEmpty().withMessage("Password is required"),
     body([TableFieldName.Email]).isEmail().withMessage("Invalid email format")
 ]
+
+export const loginValidator = [
+    body([TableFieldName.Email]).isEmail().withMessage("Invalid email format"),
+    body([TableFieldName.Password]).notEmpty().withMessage("Password is required"),
+]

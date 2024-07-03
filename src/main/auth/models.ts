@@ -37,6 +37,7 @@ User.init(
     [TableFieldName.Email]: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     [TableFieldName.Password]: {
       type: DataTypes.STRING,
