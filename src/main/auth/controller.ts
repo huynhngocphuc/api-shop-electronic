@@ -37,7 +37,6 @@ export const loginController = async (
   next: NextFunction
 ) => {
   const { email, passWord } = req.body;
-  // console.log(first)
   try {
     const user = await User.findOne({ where: { email } });
     if (!user) {
@@ -49,7 +48,7 @@ export const loginController = async (
 
     const isMatch = await bcrypt.compare(passWord, user.passWord);
     if (!isMatch) {
-      return res.status(401).json({
+      return res.status(STATUS_CODE.UNAUTHORIZED).json({
         success: false,
         message: "Invalid password",
       });

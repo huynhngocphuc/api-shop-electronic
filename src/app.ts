@@ -1,24 +1,10 @@
-import express, { NextFunction, Request, Response } from "express";
-import { routerAuth } from "./main/auth/routers";
-import { errorHandler } from "./middleware/errorHandler";
+import 'dotenv/config';
+import initializeServer from "./initializeServer";
 
-const app = express();
-require("dotenv").config();
-app.use(express.json());
 const port = process.env.PORT || 8080;
-const root_path = process.env.ROOT_PATH || "/api/v1";
+console.log("🚀 ~ port:", port)
 
-// router
-app.use(`${root_path}/auth`, routerAuth);
-
-// middleware
-app.use(errorHandler);
-
-// middleware error different
-app.use((req, res) => {
-  res.status(404).send('SomeThings went wrong');
-});
-
+const app = initializeServer()
 
 app.listen(port, () => {
   console.log(`server is running port ${port}`);
