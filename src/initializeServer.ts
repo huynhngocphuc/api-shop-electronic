@@ -3,8 +3,7 @@ import { errorHandler } from "./middleware/errorHandler";
 import router from "./router";
 export default function initializeServer() {
   const app = express();
-  const root_path = process.env.ROOT_PATH || "/api/v2";
-  console.log("🚀 ~ initializeServer ~ root_path:", root_path)
+  const root_path = process.env.ROOT_PATH || "/api/v1";
 
   app.use(express.json());
   app.use(root_path, router);

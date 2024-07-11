@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import { DataTypes, Model } from "sequelize";
-import { sequelize } from "../../db/connection";
+import { sequelize } from "../../../db/connection";
 
 enum TableFieldName {
   UserId = "userId",

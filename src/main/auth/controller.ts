@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { User } from "./models";
+import { Role, User } from "./models/";
 import { TLoginReq, TRegisterReq } from "./type";
 import { validationResult } from "express-validator";
 import { STATUS_CODE, STATUS_MESSAGE } from "../http/StatusCode";
@@ -25,6 +25,11 @@ export const registerController = async (
       passWord,
       email,
     });
+
+    // const defaultRole = await Role.findOne({ where: { name: 'user' } });
+    // if (defaultRole) {
+    //   await user.addRole(defaultRole);
+    // }
     res.status(200).json(user);
   } catch (error) {
     next(error);
